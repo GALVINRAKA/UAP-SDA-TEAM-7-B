@@ -79,7 +79,6 @@ class ManajemenApotek:
         except FileNotFoundError:
             print("File tidak ditemukan!")
 
-
 class GUI:
     def __init__(self, manajemen_apotek):
         self.manajemen_apotek = manajemen_apotek
