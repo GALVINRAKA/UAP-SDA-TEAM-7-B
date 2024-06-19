@@ -1,3 +1,65 @@
 import csv
-from tkinter import *
-from tkinter import messagebox, filedialog
+
+class Obat:
+    def __init__(self, kode, nama, stok, harga):
+        self.kode = kode
+        self.nama = nama
+        self.stok = stok
+        self.harga = harga
+
+class ManajemenApotek:
+    def __init__(self):
+        self.daftar_obat = []
+        self.inisialisasi_obat()
+
+def inisialisasi_obat(self):
+        obat1 = Obat("OB001", "Paracetamol", 100, 5000)
+        obat2 = Obat("OB002", "Amoxicillin", 50, 10000)
+        obat3 = Obat("OB003", "Vitamin C", 200, 2000)
+        self.daftar_obat.extend([obat1, obat2, obat3])
+
+#fungsi tambah
+#fungsi lihat
+#fungsi update
+#fungsi hapus
+#fungsi import_csv
+
+
+class GUI:
+    def __init__(self, manajemen_apotek):
+        self.manajemen_apotek = manajemen_apotek
+
+    def menu(self):
+        while True:
+            print("\t      SISTEM MENEJEMEN APOTEK")
+            print("\t        APOTEK JAYA MAKMUR")
+            print("***********************=MENU=**********************")
+            print("|\t      1. Tambah Obat                      |")
+            print("|\t      2. Lihat Obat                       |")
+            print("|\t      3. Update Obat                      |")
+            print("|\t      4. Hapus Obat                       |")
+            print("|\t      5. Import Data dari CSV             |")
+            print("|\t      6. Keluar                           |")
+            print("***************************************************")
+            pilihan = input("Pilih opsi: ")
+            if pilihan == '1':
+                self.manajemen_apotek.tambah_obat()
+            elif pilihan == '2':
+                self.manajemen_apotek.lihat_obat()
+            elif pilihan == '3':
+                self.manajemen_apotek.update_obat()
+            elif pilihan == '4':
+                self.manajemen_apotek.hapus_obat()
+            elif pilihan == '5':
+                self.manajemen_apotek.import_csv()
+            elif pilihan == '6':
+                print("Terima kasih telah menggunakan sistem manajemen apotek!")
+                break
+            else:
+                print("Pilihan tidak valid!")
+            input("\nTekan Enter untuk melanjutkan...")
+
+if __name__ == "__main__":
+    manajemen_apotek = ManajemenApotek()
+    gui = GUI(manajemen_apotek)
+    gui.menu()
