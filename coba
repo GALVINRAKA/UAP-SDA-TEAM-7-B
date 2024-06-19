@@ -10,6 +10,14 @@ class Obat:
 class ManajemenApotek:
     def __init__(self):
         self.daftar_obat = []
+        self.inisialisasi_obat()
+
+    def inisialisasi_obat(self):
+        # Tambahkan beberapa obat ke dalam daftar saat inisialisasi
+        obat1 = Obat("OB001", "Paracetamol", 100, 5000)
+        obat2 = Obat("OB002", "Amoxicillin", 50, 10000)
+        obat3 = Obat("OB003", "Vitamin C", 200, 2000)
+        self.daftar_obat.extend([obat1, obat2, obat3])
 
     def tambah_obat(self):
         print("\n*********** Menu Tambah Obat ***************")
@@ -78,6 +86,7 @@ class GUI:
 
     def menu(self):
         while True:
+            print("\n" * 50)  # Cetak baris kosong untuk memberikan ilusi pembersihan layar
             print("\t      SISTEM MENEJEMEN APOTEK")
             print("\t        APOTEK JAYA MAKMUR")
             print("***********************=MENU=**********************")
