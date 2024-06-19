@@ -18,9 +18,43 @@ def inisialisasi_obat(self):
         obat3 = Obat("OB003", "Vitamin C", 200, 2000)
         self.daftar_obat.extend([obat1, obat2, obat3])
 
-#fungsi tambah
-#fungsi lihat
-#fungsi update
+def tambah_obat(self):
+        print("\n*********** Menu Tambah Obat ***************")
+        kode = input("Masukkan kode obat: ")
+        nama = input("Masukkan nama obat: ")
+        stok = int(input("Masukkan stok obat: "))
+        harga = float(input("Masukkan harga obat: "))
+        obat = Obat(kode, nama, stok, harga)
+        self.daftar_obat.append(obat)
+        print("Obat berhasil ditambahkan!")
+
+    def lihat_obat(self):
+        print("\n*********** Menu Lihat Obat ***************")
+        print("Daftar Obat:")
+        if not self.daftar_obat:
+            print("Tidak ada obat yang tersedia.")
+            return
+        for obat in self.daftar_obat:
+            print(f'Kode: {obat.kode}, Nama: {obat.nama}, Stok: {obat.stok}, Harga: {obat.harga}')
+
+    def update_obat(self):
+        print("\n*********** Menu Update Obat ***************")
+        kode = input("Masukkan kode obat yang akan diupdate: ")
+        for obat in self.daftar_obat:
+            if obat.kode == kode:
+                nama = input("Masukkan nama obat baru (biarkan kosong jika tidak ingin mengubah): ")
+                stok = input("Masukkan stok obat baru (biarkan kosong jika tidak ingin mengubah): ")
+                harga = input("Masukkan harga obat baru (biarkan kosong jika tidak ingin mengubah): ")
+                if nama:
+                    obat.nama = nama
+                if stok:
+                    obat.stok = int(stok)
+                if harga:
+                    obat.harga = float(harga)
+                print("Obat berhasil diupdate!")
+                return
+        print("Kode obat tidak ditemukan!")
+
 #fungsi hapus
 #fungsi import_csv
 
