@@ -28,7 +28,7 @@ def tambah_obat(self):
         self.daftar_obat.append(obat)
         print("Obat berhasil ditambahkan!")
 
-    def lihat_obat(self):
+def lihat_obat(self):
         print("\n*********** Menu Lihat Obat ***************")
         print("Daftar Obat:")
         if not self.daftar_obat:
@@ -37,7 +37,7 @@ def tambah_obat(self):
         for obat in self.daftar_obat:
             print(f'Kode: {obat.kode}, Nama: {obat.nama}, Stok: {obat.stok}, Harga: {obat.harga}')
 
-    def update_obat(self):
+def update_obat(self):
         print("\n*********** Menu Update Obat ***************")
         kode = input("Masukkan kode obat yang akan diupdate: ")
         for obat in self.daftar_obat:
