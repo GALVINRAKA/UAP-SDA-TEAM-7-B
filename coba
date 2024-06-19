@@ -78,7 +78,6 @@ class GUI:
 
     def menu(self):
         while True:
-            print("\n" * 50)  # Cetak baris kosong untuk memberikan ilusi pembersihan layar
             print("\t      SISTEM MENEJEMEN APOTEK")
             print("\t        APOTEK JAYA MAKMUR")
             print("***********************=MENU=**********************")
