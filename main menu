@@ -12,13 +12,13 @@ class ManajemenApotek:
         self.daftar_obat = []
         self.inisialisasi_obat()
 
-def inisialisasi_obat(self):
+    def inisialisasi_obat(self):
         obat1 = Obat("OB001", "Paracetamol", 100, 5000)
         obat2 = Obat("OB002", "Amoxicillin", 50, 10000)
         obat3 = Obat("OB003", "Vitamin C", 200, 2000)
         self.daftar_obat.extend([obat1, obat2, obat3])
 
-def tambah_obat(self):
+    def tambah_obat(self):
         print("\n*********** Menu Tambah Obat ***************")
         kode = input("Masukkan kode obat: ")
         nama = input("Masukkan nama obat: ")
@@ -28,7 +28,7 @@ def tambah_obat(self):
         self.daftar_obat.append(obat)
         print("Obat berhasil ditambahkan!")
 
-def lihat_obat(self):
+    def lihat_obat(self):
         print("\n*********** Menu Lihat Obat ***************")
         print("Daftar Obat:")
         if not self.daftar_obat:
@@ -37,7 +37,7 @@ def lihat_obat(self):
         for obat in self.daftar_obat:
             print(f'Kode: {obat.kode}, Nama: {obat.nama}, Stok: {obat.stok}, Harga: {obat.harga}')
 
-def update_obat(self):
+    def update_obat(self):
         print("\n*********** Menu Update Obat ***************")
         kode = input("Masukkan kode obat yang akan diupdate: ")
         for obat in self.daftar_obat:
@@ -55,7 +55,7 @@ def update_obat(self):
                 return
         print("Kode obat tidak ditemukan!")
 
-def hapus_obat(self):
+    def hapus_obat(self):
         print("\n*********** Menu Hapus Obat ***************")
         kode = input("Masukkan kode obat yang akan dihapus: ")
         for obat in self.daftar_obat:
