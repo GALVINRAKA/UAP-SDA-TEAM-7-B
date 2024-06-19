@@ -13,7 +13,6 @@ class ManajemenApotek:
         self.inisialisasi_obat()
 
     def inisialisasi_obat(self):
-        # Tambahkan beberapa obat ke dalam daftar saat inisialisasi
         obat1 = Obat("OB001", "Paracetamol", 100, 5000)
         obat2 = Obat("OB002", "Amoxicillin", 50, 10000)
         obat3 = Obat("OB003", "Vitamin C", 200, 2000)
@@ -86,7 +85,6 @@ class GUI:
 
     def menu(self):
         while True:
-            print("\n" * 50)  # Cetak baris kosong untuk memberikan ilusi pembersihan layar
             print("\t      SISTEM MENEJEMEN APOTEK")
             print("\t        APOTEK JAYA MAKMUR")
             print("***********************=MENU=**********************")
@@ -113,7 +111,7 @@ class GUI:
                 break
             else:
                 print("Pilihan tidak valid!")
-            input("\nTekan Enter untuk melanjutkan...")  # Tambahkan jeda sebelum kembali ke menu utama
+            input("\nTekan Enter untuk melanjutkan...")
 
 if __name__ == "__main__":
     manajemen_apotek = ManajemenApotek()
