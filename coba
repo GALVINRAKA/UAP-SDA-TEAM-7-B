@@ -1,0 +1,113 @@
+import csv
+
+class Obat:
+    def __init__(self, kode, nama, stok, harga):
+        self.kode = kode
+        self.nama = nama
+        self.stok = stok
+        self.harga = harga
+
+class ManajemenApotek:
+    def __init__(self):
+        self.daftar_obat = []
+
+    def tambah_obat(self):
+        print("\n*********** Menu Tambah Obat ***************")
+        kode = input("Masukkan kode obat: ")
+        nama = input("Masukkan nama obat: ")
+        stok = int(input("Masukkan stok obat: "))
+        harga = float(input("Masukkan harga obat: "))
+        obat = Obat(kode, nama, stok, harga)
+        self.daftar_obat.append(obat)
+        print("Obat berhasil ditambahkan!")
+
+    def lihat_obat(self):
+        print("\n*********** Menu Lihat Obat ***************")
+        print("Daftar Obat:")
+        if not self.daftar_obat:
+            print("Tidak ada obat yang tersedia.")
+            return
+        for obat in self.daftar_obat:
+            print(f'Kode: {obat.kode}, Nama: {obat.nama}, Stok: {obat.stok}, Harga: {obat.harga}')
+
+    def update_obat(self):
+        print("\n*********** Menu Update Obat ***************")
+        kode = input("Masukkan kode obat yang akan diupdate: ")
+        for obat in self.daftar_obat:
+            if obat.kode == kode:
+                nama = input("Masukkan nama obat baru (biarkan kosong jika tidak ingin mengubah): ")
+                stok = input("Masukkan stok obat baru (biarkan kosong jika tidak ingin mengubah): ")
+                harga = input("Masukkan harga obat baru (biarkan kosong jika tidak ingin mengubah): ")
+                if nama:
+                    obat.nama = nama
+                if stok:
+                    obat.stok = int(stok)
+                if harga:
+                    obat.harga = float(harga)
+                print("Obat berhasil diupdate!")
+                return
+        print("Kode obat tidak ditemukan!")
+
+    def hapus_obat(self):
+        print("\n*********** Menu Hapus Obat ***************")
+        kode = input("Masukkan kode obat yang akan dihapus: ")
+        for obat in self.daftar_obat:
+            if obat.kode == kode:
+                self.daftar_obat.remove(obat)
+                print("Obat berhasil dihapus!")
+                return
+        print("Kode obat tidak ditemukan!")
+
+    def import_csv(self):
+        print("\n*********** Menu Import Data dari CSV ***************")
+        file_path = input("Masukkan path file CSV: ")
+        try:
+            with open(file_path, mode='r') as file:
+                csv_reader = csv.reader(file)
+                for row in csv_reader:
+                    kode, nama, stok, harga = row
+                    obat = Obat(kode, nama, int(stok), float(harga))
+                    self.daftar_obat.append(obat)
+            print("Data berhasil diimport dari CSV!")
+        except FileNotFoundError:
+            print("File tidak ditemukan!")
+
+class GUI:
+    def __init__(self, manajemen_apotek):
+        self.manajemen_apotek = manajemen_apotek
+
+    def menu(self):
+        while True:
+            print("\n" * 50)  # Cetak baris kosong untuk memberikan ilusi pembersihan layar
+            print("\t      SISTEM MENEJEMEN APOTEK")
+            print("\t        APOTEK JAYA MAKMUR")
+            print("***********************=MENU=**********************")
+            print("|\t      1. Tambah Obat                      |")
+            print("|\t      2. Lihat Obat                       |")
+            print("|\t      3. Update Obat                      |")
+            print("|\t      4. Hapus Obat                       |")
+            print("|\t      5. Import Data dari CSV             |")
+            print("|\t      6. Keluar                           |")
+            print("***************************************************")
+            pilihan = input("Pilih opsi: ")
+            if pilihan == '1':
+                self.manajemen_apotek.tambah_obat()
+            elif pilihan == '2':
+                self.manajemen_apotek.lihat_obat()
+            elif pilihan == '3':
+                self.manajemen_apotek.update_obat()
+            elif pilihan == '4':
+                self.manajemen_apotek.hapus_obat()
+            elif pilihan == '5':
+                self.manajemen_apotek.import_csv()
+            elif pilihan == '6':
+                print("Terima kasih telah menggunakan sistem manajemen apotek!")
+                break
+            else:
+                print("Pilihan tidak valid!")
+            input("\nTekan Enter untuk melanjutkan...")  # Tambahkan jeda sebelum kembali ke menu utama
+
+if __name__ == "__main__":
+    manajemen_apotek = ManajemenApotek()
+    gui = GUI(manajemen_apotek)
+    gui.menu()
